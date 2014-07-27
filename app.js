@@ -38,7 +38,7 @@ tilelive.list(mbtilesdirectory, function(err, tileinfo) {
 
     // When client requests /mymbtiles/z/x/y.png, the MBTiles module serves the tile.
     tilelive.load(tileinfo[tileset], function(err, tilestore) {
-      var tilestoreid = new RegExp(/\/([^/.]+).mbtiles/).exec(tilestore.filename)[1];
+      var tilestoreid = new RegExp(/\/([^/]+)\.mbtiles$/).exec(tilestore.filename)[1];
       console.log("  http://" + os.hostname() + ":" + port + "/" + tilestoreid + "/{z}/{x}/{y}.png");
       server.get("/" + tilestoreid + "/:z/:x/:y.png", function(req, res) {
         tilestore.getTile(req.param("z"), req.param("x"), req.param("y"), function(err, tile, headers) {
