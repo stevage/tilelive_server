@@ -52,7 +52,7 @@ tilelive.list(mbtilesdirectory, function(err, tileinfo) {
 
       // When client requests /mymbtiles/z/xz/y.grid.json, MBTiles serves the UTFGrid (json).
       console.log("  http://" + os.hostname() + ":" + port + "/" + tilestoreid + "/{z}/{x}/{y}.grid.json");
-      server.get("/" + tilestore.id + "/:z/:x/:y.grid.json", function(req, res) {
+      server.get("/" + tilestoreid + "/:z/:x/:y.grid.json", function(req, res) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.type("application/json");
